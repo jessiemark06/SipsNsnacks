@@ -1,3 +1,15 @@
+<?php 
+require_once "includes/config_session.inc.php";
+if (isset($_SESSION["logged_in"]) && $_SESSION["logged_in"] === true) {
+    if ($_SESSION["user_role"] === "admin") {
+        header("Location: admin_dashboard.php");
+        exit();
+    } else {
+        header("Location: cust_dashboard.php");
+        exit();
+    }
+}
+?>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -21,22 +33,31 @@
              style="padding: 2rem; background: #292929; min-height: 300px;">
             <div style="width: 100%; max-width: 320px;">
                 <h2 class="text-center mb-4" style="color: #EAE4D5;">Sign In</h2>
-                <form id="myForm" action="" method="post">
+                <form id="myForm" action="includes/login.inc.php" method="post">
                     <div class="mb-2">
                         <label for="email" class="form-label" style="color: white;">Email</label>
-                        <input type="text" class="form-control" id="email" placeholder="Enter Email">
+                        <input name="email" type="text" class="form-control" id="email" placeholder="Enter Email">
                     </div>
                     <div class="mb-4">
-                        <label for="pass" class="form-label" style="color: white;">Password</label>
-                        <input type="password" class="form-control" id="pass" placeholder="Enter Password">
+                        <label for="pass1" class="form-label" style="color: white;">Password</label>
+                        <input name="pass1" type="password" class="form-control" id="pass1" placeholder="Enter Password">
+                        <div class="text-center mt-2">
+                            <?php if (isset($_SESSION["errors_login"]["login_wrong"])): ?>
+                                <span class="text-danger small"><?php echo $_SESSION["errors_login"]["login_wrong"]; ?></span>
+                            <?php endif; ?>
+                        </div>       
                     </div>
+                    
                     <div class="d-grid gap-2 mb-2">
                         <button type="submit" class="btn rounded-4" 
                                 style="background: #EAE4D5; color: #000;">Sign In</button>
                         <a href="signup.php" class="btn rounded-4" 
                            style="border: 1px solid #EAE4D5; color: #EAE4D5; background: #292929;">Sign Up</a>
+                           
                     </div>
+                    
                 </form>
+                <?php unset($_SESSION["errors_login"]); ?>
             </div>
         </div>
 
