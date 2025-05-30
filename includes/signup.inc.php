@@ -17,7 +17,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
     require_once("signup_contr.inc.php");
     require_once "signup_model.inc.php";
 
-    // Error Handler
+    
     $errors = [];
     if (empty($fname)){
     $errors["fname"] = "Firstname is required!";
