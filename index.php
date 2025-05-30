@@ -1,3 +1,16 @@
+<?php 
+require_once "includes/config_session.inc.php";
+if (isset($_SESSION["logged_in"]) && $_SESSION["logged_in"] === true) {
+    if ($_SESSION["user_role"] === "admin") {
+        header("Location: admin_dashboard.php");
+        exit();
+    } else {
+        header("Location: cust_dashboard.php");
+        exit();
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,7 +31,7 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
-          <li class="nav-item "><a class="nav-link me-3   text-dark" href="#about">About</a></li> 
+          <li class="nav-item "><a class="nav-link me-3 text-dark " href="#about">About</a></li> 
           <li class="nav-item  "><a class="nav-link me-3 text-dark" href="#contact">Contact</a></li>
           <li class="nav-item "><a class="nav-link text-dark" href="login.php">Login</a></li>
         </ul>
@@ -30,7 +43,7 @@
   <section class="vh-100 d-flex align-items-center justify-content-center text-center text-white "
         style="background-image: url('assets/img/bg.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat;">
     <div class="container ">
-      <h1 class="display-3 fw-bold">Welcome to SipsNSnacks</h1>
+      <h1 class="display-3 fw-bold" >Welcome to SipsNSnacks</h1>
       <p class="lead fw-bold">Your go-to spot for tasty treats and refreshing drinks!</p>
     </div>
   </section>
