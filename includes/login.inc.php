@@ -34,7 +34,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
     if($errors){
         $_SESSION["errors_login"] = $errors;
 
-        header("location: ../index.php");
+        header("location: ../Login.php");
         exit();
     }
 
