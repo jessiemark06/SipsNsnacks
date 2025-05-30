@@ -89,7 +89,7 @@ require_once 'includes/config_session.inc.php';
                     </div>
                     <div class="text-center">
                         <p class="text-white">Already have an account?
-                            <a href="index.php" class="text-decoration-none" style="color:#EAE4D5;">Sign In</a>
+                            <a href="login.php" class="text-decoration-none" style="color:#EAE4D5;">Sign In</a>
                         </p>
                     </div>
                 </form>
