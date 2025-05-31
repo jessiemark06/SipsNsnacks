@@ -1,5 +1,14 @@
-<?php
-require_once 'includes/config_session.inc.php';
+<?php 
+require_once "includes/config_session.inc.php";
+if (isset($_SESSION["logged_in"]) && $_SESSION["logged_in"] === true) {
+    if ($_SESSION["user_role"] === "admin") {
+        header("Location: admin_dashboard.php");
+        exit();
+    } else {
+        header("Location: cust_dashboard.php");
+        exit();
+    }
+}
 ?>
 
 <html>

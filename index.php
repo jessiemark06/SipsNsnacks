@@ -25,13 +25,13 @@ if (isset($_SESSION["logged_in"]) && $_SESSION["logged_in"] === true) {
   <nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color: #EAE4D5">
 
     <div class="container" >
-      <a class="navbar-brand fw-bold" href="#">SipsNSnacks</a>
+      <a class="navbar-brand fw-bold" href="index.php"><img class="navbar-brand" src="assets/img/logo.png" style="width: 70px; height: auto;">Sips'NSnacks</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
-          <li class="nav-item "><a class="nav-link me-3 text-dark " href="#about">About</a></li> 
+          <li class="nav-item "><a class="nav-link fw-semibold me-3 text-dark " href="#about">About</a></li> 
           <li class="nav-item  "><a class="nav-link me-3 text-dark" href="#contact">Contact</a></li>
           <li class="nav-item "><a class="nav-link text-dark" href="login.php">Login</a></li>
         </ul>
@@ -43,7 +43,7 @@ if (isset($_SESSION["logged_in"]) && $_SESSION["logged_in"] === true) {
   <section class="vh-100 d-flex align-items-center justify-content-center text-center text-white "
         style="background-image: url('assets/img/bg.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat;">
     <div class="container ">
-      <h1 class="display-3 fw-bold" >Welcome to SipsNSnacks</h1>
+      <h1 class="display-3 fw-bold" style="color: #EAE4D5;" >Welcome to Sips'NSnacks</h1>
       <p class="lead fw-bold">Your go-to spot for tasty treats and refreshing drinks!</p>
     </div>
   </section>

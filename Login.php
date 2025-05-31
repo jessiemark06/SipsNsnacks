@@ -25,8 +25,10 @@ if (isset($_SESSION["logged_in"]) && $_SESSION["logged_in"] === true) {
 
         <div class="d-flex flex-column justify-content-center align-items-center text-center col-md-6" 
              style="background-color: #EAE4D5; padding: 2rem; min-height: 300px;">
+            <a href="index.php">
             <img src="assets/img/logo.png" alt="Logo" style="width: 175px; height: auto;" class="mb-3">
-            <h2 class="fw-bold" style="color: #000;">Sips 'n Snacks</h2>
+            </a>
+            <a href="index.php" class="text-decoration-none"><h2 class="fw-bold" style="color: #000;">Sips'NSnacks</h2></a>
         </div>
 
         <div class="d-flex flex-column justify-content-center align-items-center col-md-6" 
