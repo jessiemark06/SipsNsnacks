@@ -48,7 +48,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
     exit();
 
     } else {
-    header("Location: ../cust_dashboard.php");
+    header("Location: ../staff/staff_dashboard.php");
     exit();
         }
 
