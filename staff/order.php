@@ -2,7 +2,7 @@
 require_once "../includes/config_session.inc.php";
 require_once "../includes/dbh.inc.php";
 
-if (empty($_SESSION["logged_in"]) || $_SESSION["user_role"] !== "customer") {
+if (empty($_SESSION["logged_in"]) || $_SESSION["user_role"] !== "staff") {
     http_response_code(403);
     echo json_encode(['error' => 'Unauthorized']);
     exit();

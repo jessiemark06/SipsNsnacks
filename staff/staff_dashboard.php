@@ -2,7 +2,7 @@
 require_once "../includes/config_session.inc.php";
 require_once "../includes/dbh.inc.php";
 
-if (empty($_SESSION["logged_in"]) || $_SESSION["user_role"] !== "customer") {
+if (empty($_SESSION["logged_in"]) || $_SESSION["user_role"] !== "staff") {
     header("Location: index.php");
     exit();
 }
@@ -30,7 +30,7 @@ if (isset($_GET['clear']) && $_GET['clear'] == 1) {
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color: #EAE4D5">
 
     <div class="container" >
-      <a class="navbar-brand fw-bold" href="index.php"><img class="navbar-brand" src="../assets/img/logo.png" style="width: 70px; height: auto;">Sips'NSnacks</a>
+      <a class="navbar-brand fw-bold" href="staff_dashboard.php"><img class="navbar-brand" src="../assets/img/logo.png" style="width: 70px; height: auto;">Sips'NSnacks</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
         <span class="navbar-toggler-icon"></span>
       </button>
