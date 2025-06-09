@@ -70,7 +70,7 @@ if (isset($_GET['id'])) {
                         <div class="m-2">
                             <button 
                                 type="button"
-                                  class="btn btn-outline-primary d-flex flex-column justify-content-between align-items-center snack-btn"
+                                  class="btn btn-outline-secondary d-flex flex-column justify-content-between align-items-center snack-btn"
                                     data-name="<?= htmlspecialchars($item['name']) ?>"
                                     style="width: 120px; height: 160px; padding: 10px;"
                             >
