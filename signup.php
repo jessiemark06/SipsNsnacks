@@ -5,7 +5,7 @@ if (isset($_SESSION["logged_in"]) && $_SESSION["logged_in"] === true) {
         header("Location: admin_dashboard.php");
         exit();
     } else {
-        header("Location: cust_dashboard.php");
+        header("Location: staff/staff_dashboard.php");
         exit();
     }
 }
