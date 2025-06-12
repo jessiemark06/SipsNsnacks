@@ -10,12 +10,6 @@ if (empty($_SESSION["logged_in"]) || $_SESSION["user_role"] !== "staff") {
 $stmt = $pdo->query("SELECT * FROM products");
 $products = $stmt->fetchAll();
 
-if (isset($_GET['clear']) && $_GET['clear'] == 1) {
-    unset($_SESSION['cart']);
-    header("Location: staff_dashboard.php");
-    exit();
-}
-
 if (isset($_GET['id'])) {
     $id = (int) $_GET['id'];
 
@@ -40,40 +34,46 @@ if (isset($_GET['id'])) {
     <link rel="stylesheet" href="../assets/bootstrap-5.0.2-dist/css/bootstrap.min.css" />
     <script src="../assets/bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js"></script>
 </head>
-<body class="p-4">
-    <section class="mt-5 pt-5">
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color: #EAE4D5">
+<body class="dd-flex flex-column" style="min-height: 100vh;">
+    <!-- header -->
+     <header style="background-color: #EAE4D5;">
+        <div class="d-flex align-items-center justify-content-center px-4 py-2">
+            <a class="navbar-brand fw-bold d-flex align-items-center text-decoration-none text-dark" href="#">
+                <img src="../assets/img/logo.png" alt="Logo" style="width: 70px; height: auto; margin-left: 50px; margin-right: 10px;">
+                Sips'NSnacks
+            </a>
+        </div>
+    </header>
 
-    <div class="container" >
-      <a class="navbar-brand fw-bold" href="staff_dashboard.php"><img class="navbar-brand" src="../assets/img/logo.png" style="width: 70px; height: auto;">Sips'NSnacks</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto"> 
-          <li class="nav-item "><a class="nav-link text-dark" href="../logout.php">Logout</a></li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-    <h1 class="mb-3">POS</h1>
-    <p>Welcome, <?= htmlspecialchars($_SESSION["user_email"]) ?></p>
+    <!-- sa loob ng div boi pinaghalo 'yung sidebar saka yung ididisplay mo sa page para di mabaliw -->
+    <div class="d-flex flex-column flex-md-row flex-grow-1 ">
+        <!-- sidebar man -->
+        <div class="bg-dark text-white d-flex flex-column" style="width: 100%; max-width: 250px;">
+            <div class="p-3 d-flex flex-column h-100">
+                <h4 class="mb-4">Admin Panel</h4>
+                <div class="d-grid gap-2">
+                    <a href="admin_dashboard.php" class="btn btn-outline-light text-start">Daily Sales</a>
+                </div>
+                <div class="mt-auto pt-3">
+                    <a href="../logout.php" class="btn btn-outline-light text-start w-100">Logout</a>
+                </div>
+            </div>
+        </div>
 
-  <div class="row">
 
     <div class="col-md-7">
         <div>
-            <h4>Snacks</h4>
-            <div class="d-flex flex-wrap">
+            <h4 class="d-flex align-items-center justify-content-center pt-3">Snacks</h4>
+              <div class="d-flex flex-wrap justify-content-center">
                 <?php foreach ($products as $item): ?>
                     <?php if ($item['category'] === 'Snack'): ?>
                         <div class="m-2">
                             <button 
-                                type="button"
-                                  class="btn btn-outline-secondary d-flex flex-column justify-content-between align-items-center snack-btn"
-                                    data-name="<?= htmlspecialchars($item['name']) ?>"
-                                    style="width: 120px; height: 160px; padding: 10px;"
-                            >
+                              type="button"
+                                class="btn btn-outline-secondary d-flex flex-column justify-content-between align-items-center snack-btn"
+                                data-name="<?= htmlspecialchars($item['name']) ?>"
+                                data-price="<?= $item['price'] ?>"
+                                style="width: 120px; height: 160px; padding: 10px;">
                                  <img src="?id=<?= $item['id'] ?>" 
                                              alt="<?= htmlspecialchars($item['name']) ?>" 
                                     style="width: 80px; height: 80px; object-fit: cover; margin-bottom: 5px;">
@@ -90,18 +90,22 @@ if (isset($_GET['id'])) {
         <hr style="margin: 30px 0;">
 
         <div>
-            <h4>Drinks</h4>
-            <div class="d-flex flex-wrap">
+            <h4 class="d-flex align-items-center justify-content-center">Drinks</h4>
+            <div class="d-flex flex-wrap justify-content-center">
                 <?php foreach ($products as $item): ?>
                     <?php if ($item['category'] === 'Drink'): ?>
                         <div class="m-2">
                             <button 
                                 type="button"
-                                class="btn btn-outline-primary d-flex flex-column justify-content-between align-items-center snack-btn"
+                                class="btn btn-outline-secondary d-flex flex-column justify-content-between align-items-center snack-btn"
+                               
                                 data-name="<?= htmlspecialchars($item['name']) ?>"
-                                style="width: 120px; height: 160px; padding: 10px;"
-                            >
+                                data-price="<?= $item['price'] ?>"
+                                style="width: 120px; height: 160px; padding: 10px;">
+                             
                                 <img src="?id=<?= $item['id'] ?>" 
+
+
                                              alt="<?= htmlspecialchars($item['name']) ?>" 
                                     style="width: 80px; height: 80px; object-fit: cover; margin-bottom: 5px;">
                                 <span style="text-align: center; font-size: 0.9rem;">
@@ -115,7 +119,7 @@ if (isset($_GET['id'])) {
         </div>
     </div>
  
-    <div class="col-md-5">
+    <div class="col-md-3 pt-3 me-3">
         <h3>Order</h3>
         <ul class="list-group" id="cart-list">
             <?php
@@ -135,10 +139,90 @@ if (isset($_GET['id'])) {
             ?>
         </ul>
         <h4 class="mt-3">Total: ₱<span id="total-price"><?= number_format($total, 2) ?></span></h4>
-        <a href="?clear=1" class="btn btn-warning mt-2">Clear Order</a>
+        
+
+        <form method="POST" action="order_items.php">
+            <input type="hidden" name="cart" id="cart-data">
+                    <a href="?clear=1" class="btn btn-warning mt-2">Clear Order</a>
+            <button type="submit" class="btn btn-success mt-2">Complete Order</button>
+        </form>
+
     </div>
 </div>
+ 
+<script>
+    let cart = [];
 
-</section>
+    document.querySelectorAll('.snack-btn').forEach(button => {
+        button.addEventListener('click', () => {
+            const itemName = button.getAttribute('data-name');
+            const itemPrice = parseFloat(button.getAttribute('data-price'));
+
+            const existingItem = cart.find(item => item.name === itemName);
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({ name: itemName, price: itemPrice, quantity: 1 });
+            }
+
+            updateCartDisplay();
+        });
+    });
+
+  function updateCartDisplay() {
+    const list = document.getElementById('cart-list');
+    const totalEl = document.getElementById('total-price');
+    list.innerHTML = '';
+
+    let total = 0;
+
+    if (cart.length === 0) {
+        list.innerHTML = '<li class="list-group-item">No order</li>';
+    } else {
+        cart.forEach((item, index) => {
+            const itemTotal = item.price * item.quantity;
+            total += itemTotal;
+ 
+            item.total = itemTotal;
+
+            const li = document.createElement('li');
+            li.className = 'list-group-item d-flex justify-content-between align-items-center';
+
+            li.innerHTML = `
+                <div>
+                    <strong>${item.name}</strong><br>
+                    ₱${item.price.toFixed(2)} x ${item.quantity} = ₱${itemTotal.toFixed(2)}
+                </div>
+                <div>
+                    <button class="btn btn-sm btn-outline-secondary me-1" onclick="changeQuantity(${index}, -1)">−</button>
+                    <button class="btn btn-sm btn-outline-secondary" onclick="changeQuantity(${index}, 1)">+</button>
+                </div>
+            `;
+
+            list.appendChild(li);
+        });
+    }
+
+    totalEl.textContent = total.toFixed(2);
+    document.getElementById('cart-data').value = JSON.stringify(cart);
+}
+
+    function changeQuantity(index, delta) {
+        cart[index].quantity += delta;
+        if (cart[index].quantity <= 0) {
+            cart.splice(index, 1);
+        }
+        updateCartDisplay();
+    }
+
+    function clearCart() {
+        cart = [];
+        updateCartDisplay();
+    }
+ 
+    updateCartDisplay();
+</script>
+
+
 </body>
 </html>

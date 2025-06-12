@@ -44,7 +44,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
     $_SESSION["logged_in"] = true;
 
     if ($_SESSION["user_role"] === "admin") {
-    header("Location: ../admin_dashboard.php");
+    header("Location: ../admin/admin_dashboard.php");
     exit();
 
     } else {

@@ -1,6 +1,6 @@
 <?php
-require_once "includes/config_session.inc.php";
-require_once "includes/dbh.inc.php";
+require_once "../includes/config_session.inc.php";
+require_once "../includes/dbh.inc.php";
 
 if (empty($_SESSION["logged_in"]) || $_SESSION["user_role"] !== "admin") {
     header("Location: index.php");
@@ -18,21 +18,22 @@ $users = $stmt->fetchAll();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Admin Dashboard</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="assets/bootstrap-5.0.2-dist/css/bootstrap.min.css">
-    <script src="assets/bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="../assets/bootstrap-5.0.2-dist/css/bootstrap.min.css">
+    <script src="../    assets/bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js"></script>
 </head>
 
 <body style="margin:0">
 <div class="d-flex flex-column" style="min-height: 100vh;">
     
-    <header class="shadow-lg" style="background-color: #EAE4D5;">
-        <div class="d-flex align-items-center px-4 py-2">
-            <a class="navbar-brand fw-bold d-flex align-items-center text-decoration-none text-dark" href="#">
-                <img src="assets/img/logo.png" alt="Logo" style="width: 70px; height: auto; margin-left: 50px; margin-right: 10px;">
-                Sips'NSnacks
-            </a>
-        </div>
-    </header>
+<header style="background-color: #EAE4D5;" class="shadow-sm">
+    <div class="d-flex align-items-center px-4 py-2">
+        <a class="navbar-brand fw-bold d-flex align-items-center text-decoration-none text-dark" href="#">
+            <img src="../assets/img/logo.png" alt="Logo" style="width: 70px; height: auto; margin-left: 50px; margin-right: 10px;">
+            Sips'NSnacks
+        </a>
+    </div>
+</header>
+
 
    
     <div class="d-flex flex-column flex-md-row flex-grow-1">
@@ -45,7 +46,7 @@ $users = $stmt->fetchAll();
                     <a href="user_tab.php" class="btn btn-outline-light text-start">User Management</a>
                 </div>
                 <div class="mt-auto pt-3">
-                    <a href="logout.php" class="btn btn-outline-light text-start w-100">Logout</a>
+                    <a href="../logout.php" class="btn btn-outline-light text-start w-100">Logout</a>
                 </div>
             </div>
         </div>
@@ -95,7 +96,7 @@ $users = $stmt->fetchAll();
                             </tr>
                         <?php endforeach; ?>
                     </tbody>
-                </table>
+                </tabl  e>
             </div>
         </div>
     </div>
