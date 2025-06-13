@@ -73,9 +73,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["update_user"])) {
         $_SESSION["error"] = "Failed to update user.";
     }
 
-    header("Location: ../user_tab.php");
+    header("Location: ../admin/user_tab.php");
     exit();
 } else {
-    header("Location: ../user_tab.php");
+    header("Location: ../admin/user_tab.php");
     exit();
 }
+
+?>

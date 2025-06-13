@@ -38,7 +38,7 @@ if (!$user) {
     <div class="container shadow-lg p-0" style="max-width: 600px; background: #292929; overflow-y: auto; border-radius: 5px;">
         <div class="p-4">
             <h2 class="mb-4 text-center" style="color: #EAE4D5;">Update User</h2>
-            <form action="includes/edit_user.inc.php" method="post">
+            <form action="../includes/edit_user.inc.php" method="post">
                 <input type="hidden" name="acc_id" value="<?= $user['acc_id'] ?>">
 
                 <div class="row mb-2 mx-3">

@@ -64,12 +64,12 @@ $totalSales = array_sum(array_column($orders, 'total'));
 
  
         <form method="GET" class="mt-2 d-flex justify-content-between align-items-center gap-2 flex-wrap">
-                    <div> <h2 class="mb-4 text-center">📅 Daily Sales</h2></div>
+                    <div> <h2 class="mb-4 text-center">Daily Sales</h2></div>
                  
                  <div class="d-flex align-items-center">
             <label for="date" class="form-label mb-0 me-2" style="white-space: nowrap;">Select Date:</label>
             <input type="date" id="date" name="date" value="<?= $date ?>" class="form-control me-2" style="max-width: 200px;">
-            <button type="submit" class="btn btn-primary">View</button>
+            <button type="submit" class="btn btn-dark">View</button>
             </div>
 
             </form>

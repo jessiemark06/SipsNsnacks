@@ -7,8 +7,11 @@ if (empty($_SESSION["logged_in"]) || $_SESSION["user_role"] !== "admin") {
     exit();
 }
 
-$stmt = $pdo->query("SELECT * FROM acc_tbl");
+$currentAdminId = $_SESSION["user_id"];
+$stmt = $pdo->prepare("SELECT * FROM acc_tbl WHERE acc_id != ?");
+$stmt->execute([$currentAdminId]);
 $users = $stmt->fetchAll();
+
 ?>
 
 <!DOCTYPE html>
@@ -96,7 +99,7 @@ $users = $stmt->fetchAll();
                             </tr>
                         <?php endforeach; ?>
                     </tbody>
-                </tabl  e>
+                </table>
             </div>
         </div>
     </div>

@@ -36,14 +36,15 @@ if (isset($_GET['id'])) {
 </head>
 <body class="dd-flex flex-column" style="min-height: 100vh;">
     <!-- header -->
-     <header style="background-color: #EAE4D5;">
-        <div class="d-flex align-items-center justify-content-center px-4 py-2">
-            <a class="navbar-brand fw-bold d-flex align-items-center text-decoration-none text-dark" href="#">
-                <img src="../assets/img/logo.png" alt="Logo" style="width: 70px; height: auto; margin-left: 50px; margin-right: 10px;">
-                Sips'NSnacks
-            </a>
-        </div>
-    </header>
+     <header style="background-color: #EAE4D5;" class="shadow-sm">
+    <div class="d-flex align-items-center px-4 py-2">
+        <a class="navbar-brand fw-bold d-flex align-items-center text-decoration-none text-dark" href="#">
+            <img src="../assets/img/logo.png" alt="Logo" style="width: 70px; height: auto; margin-left: 50px; margin-right: 10px;">
+            Sips'NSnacks
+        </a>
+    </div>
+</header>
+
 
     <!-- sa loob ng div boi pinaghalo 'yung sidebar saka yung ididisplay mo sa page para di mabaliw -->
     <div class="d-flex flex-column flex-md-row flex-grow-1 ">
@@ -52,7 +53,7 @@ if (isset($_GET['id'])) {
             <div class="p-3 d-flex flex-column h-100">
                 <h4 class="mb-4">Admin Panel</h4>
                 <div class="d-grid gap-2">
-                    <a href="admin_dashboard.php" class="btn btn-outline-light text-start">Daily Sales</a>
+                    <a href="admin_dashboard.php" class="btn btn-outline-light text-start">Order</a>
                 </div>
                 <div class="mt-auto pt-3">
                     <a href="../logout.php" class="btn btn-outline-light text-start w-100">Logout</a>
