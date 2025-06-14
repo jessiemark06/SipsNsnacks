@@ -6,7 +6,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['cart'])) {
     $cart = json_decode($_POST['cart'], true);
 
     if (!is_array($cart) || empty($cart)) {
-        die("Cart is empty.");
+        echo "<script>
+        alert('Your cart is empty.');
+        window.location.href = 'staff_dashboard.php';  
+    </script>";
+    exit;
     }
 
     $orderTotal = 0;

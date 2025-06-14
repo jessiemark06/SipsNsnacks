@@ -24,6 +24,7 @@ if (isset($_GET['id'])) {
     }
 }
  
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -44,6 +45,7 @@ if (isset($_GET['id'])) {
         </a>
     </div>
 </header>
+
 
 
     <!-- sa loob ng div boi pinaghalo 'yung sidebar saka yung ididisplay mo sa page para di mabaliw -->
@@ -119,9 +121,15 @@ if (isset($_GET['id'])) {
             </div>
         </div>
     </div>
+    
  
     <div class="col-md-3 pt-3 me-3">
         <h3>Order</h3>
+        <?php if (!empty($cartError)): ?>
+<div id="cartPopup" class="popup-message">
+    <?= htmlspecialchars($cartError); ?>
+</div>
+<?php endif; ?>
         <ul class="list-group" id="cart-list">
             <?php
             $total = 0;
@@ -136,11 +144,12 @@ if (isset($_GET['id'])) {
                 }
             } else {
                 echo "<li class='list-group-item'>No order</li>";
+                
             }
             ?>
         </ul>
+       
         <h4 class="mt-3">Total: ₱<span id="total-price"><?= number_format($total, 2) ?></span></h4>
-        
 
         <form method="POST" action="order_items.php">
             <input type="hidden" name="cart" id="cart-data">
