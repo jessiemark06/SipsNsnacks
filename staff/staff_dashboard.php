@@ -53,7 +53,7 @@ if (isset($_GET['id'])) {
             <div class="p-3 d-flex flex-column h-100">
                 <h4 class="mb-4">Admin Panel</h4>
                 <div class="d-grid gap-2">
-                    <a href="admin_dashboard.php" class="btn btn-outline-light text-start">Order</a>
+                    <a href="staff_dashboard.php" class="btn btn-outline-light text-start">Order</a>
                 </div>
                 <div class="mt-auto pt-3">
                     <a href="../logout.php" class="btn btn-outline-light text-start w-100">Logout</a>
