@@ -32,6 +32,7 @@ if (isset($_GET['id'])) {
     <meta charset="utf-8" />
     <title>POS</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/png" href="../assets/img/favicon.png">
     <link rel="stylesheet" href="../assets/bootstrap-5.0.2-dist/css/bootstrap.min.css" />
     <script src="../assets/bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js"></script>
 </head>

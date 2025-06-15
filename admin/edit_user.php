@@ -29,6 +29,7 @@ if (!$user) {
 <html>
 <head>
     <title>Edit User</title>
+    <link rel="icon" type="image/png" href="../assets/img/favicon.png">
     <link rel="stylesheet" href="../assets/bootstrap-5.0.2-dist/css/bootstrap.min.css">
 </head>
 <body style="background-color:rgb(250, 250, 250);">
