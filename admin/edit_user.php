@@ -32,9 +32,15 @@ if (!$user) {
     <link rel="stylesheet" href="../assets/bootstrap-5.0.2-dist/css/bootstrap.min.css">
 </head>
 <body style="background-color:rgb(250, 250, 250);">
- 
-
-<div class="d-flex justify-content-center align-items-center min-vh-100">
+<header style="background-color: #EAE4D5;" class="shadow-sm">
+    <div class="d-flex align-items-center px-4 py-2">
+        <a class="navbar-brand fw-bold d-flex align-items-center text-decoration-none text-dark" href="#">
+            <img src="../assets/img/logo.png" alt="Logo" style="width: 70px; height: auto; margin-left: 50px; margin-right: 10px;">
+            Sips'NSnacks
+        </a>
+    </div>
+</header>
+<div class="d-flex justify-content-center shadow-lg align-items-center min-vh-100">
     <div class="container shadow-lg p-0" style="max-width: 600px; background: #292929; overflow-y: auto; border-radius: 5px;">
         <div class="p-4">
             <h2 class="mb-4 text-center" style="color: #EAE4D5;">Update User</h2>

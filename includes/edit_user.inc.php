@@ -57,7 +57,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["update_user"])) {
     if (!empty($errors_edit)) {
         $_SESSION["errors_edit"] = $errors_edit;
         $_SESSION["old_inputs_edit"] = $_POST;
-        header("Location: ../edit_user.php?id=" . $acc_id);
+        header("Location: ../admin/edit_user.php?id=" . $acc_id);
         exit();
     }
 
