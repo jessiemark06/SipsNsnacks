@@ -154,8 +154,8 @@ if (isset($_GET['id'])) {
 
         <form method="POST" action="order_items.php">
             <input type="hidden" name="cart" id="cart-data">
-                    <a href="?clear=1" class="btn btn-warning mt-2">Clear Order</a>
-            <button type="submit" class="btn btn-success mt-2">Complete Order</button>
+                    <a href="?clear=1" class="btn btn-danger mt-2">Clear Order</a>
+            <button type="submit" class="btn btn-dark mt-2">Complete Order</button>
         </form>
 
     </div>
