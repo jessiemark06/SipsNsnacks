@@ -20,10 +20,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["delete_id"])) {
         $_SESSION["error"] = "Failed to delete user: " . $e->getMessage();
     }
 
-    header("Location: ../user_tab.php");
+    header("Location: ../admin/user_tab.php");
     exit();
 } else {
-    header("Location: ../user_tab.php");
+    header("Location: ../admin/user_tab.php");
     exit();
 }
 

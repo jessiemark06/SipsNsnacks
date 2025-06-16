@@ -92,7 +92,7 @@ $users = $stmt->fetchAll();
                                 <td class="d-flex gap-1">
                                     <a href="edit_user.php?id=<?= $user['acc_id'] ?>" class="btn btn-sm btn-dark">Edit</a>
 
-                                     <form action="includes/delete_user.inc.php" method="post" onsubmit="return confirm('Are you sure you want to delete this user?');">
+                                     <form action="../includes/delete_user.inc.php" method="post" onsubmit="return confirm('Are you sure you want to delete this user?');">
                                             <input type="hidden" name="delete_id" value="<?= $user['acc_id'] ?>">
                                              <button type="submit" name="delete_user" class="btn btn-sm btn-danger">Delete</button>
                                       </form>
