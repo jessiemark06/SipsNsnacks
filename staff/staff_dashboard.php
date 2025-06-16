@@ -57,10 +57,9 @@ if (isset($_GET['id'])) {
                 <h4 class="mb-4">Admin Panel</h4>
                 <div class="d-grid gap-2">
                     <a href="staff_dashboard.php" class="btn btn-outline-light text-start">Order</a>
+                      <a href="../logout.php" class="btn btn-outline-light text-start w-100">Logout</a>
                 </div>
-                <div class="mt-auto pt-3">
-                    <a href="../logout.php" class="btn btn-outline-light text-start w-100">Logout</a>
-                </div>
+ 
             </div>
         </div>
 
@@ -126,11 +125,6 @@ if (isset($_GET['id'])) {
  
     <div class="col-md-3 pt-3 me-3">
         <h3>Order</h3>
-        <?php if (!empty($cartError)): ?>
-<div id="cartPopup" class="popup-message">
-    <?= htmlspecialchars($cartError); ?>
-</div>
-<?php endif; ?>
         <ul class="list-group" id="cart-list">
             <?php
             $total = 0;
@@ -180,58 +174,52 @@ if (isset($_GET['id'])) {
         });
     });
 
-  function updateCartDisplay() {
+function updateCartDisplay() {
     const list = document.getElementById('cart-list');
     const totalEl = document.getElementById('total-price');
     list.innerHTML = '';
-
+    
     let total = 0;
 
-    if (cart.length === 0) {
+    if (!cart.length) {
         list.innerHTML = '<li class="list-group-item">No order</li>';
     } else {
-        cart.forEach((item, index) => {
+        for (let i = 0; i < cart.length; i++) {
+            const item = cart[i];
             const itemTotal = item.price * item.quantity;
             total += itemTotal;
- 
-            item.total = itemTotal;
 
             const li = document.createElement('li');
             li.className = 'list-group-item d-flex justify-content-between align-items-center';
-
-            li.innerHTML = `
-                <div>
+            li.innerHTML = `<div>
                     <strong>${item.name}</strong><br>
                     ₱${item.price.toFixed(2)} x ${item.quantity} = ₱${itemTotal.toFixed(2)}
-                </div>
-                <div>
-                    <button class="btn btn-sm btn-outline-secondary me-1" onclick="changeQuantity(${index}, -1)">−</button>
-                    <button class="btn btn-sm btn-outline-secondary" onclick="changeQuantity(${index}, 1)">+</button>
-                </div>
-            `;
-
+                    </div>
+                    <div>
+                    <button class="btn btn-sm btn-outline-secondary me-1" onclick="changeQuantity(${i}, -1)">−</button>
+                    <button class="btn btn-sm btn-outline-secondary" onclick="changeQuantity(${i}, 1)">+</button>
+                </div>`;
             list.appendChild(li);
-        });
+        }
     }
 
     totalEl.textContent = total.toFixed(2);
     document.getElementById('cart-data').value = JSON.stringify(cart);
 }
 
-    function changeQuantity(index, delta) {
-        cart[index].quantity += delta;
-        if (cart[index].quantity <= 0) {
-            cart.splice(index, 1);
-        }
-        updateCartDisplay();
-    }
-
-    function clearCart() {
-        cart = [];
-        updateCartDisplay();
-    }
- 
+function changeQuantity(index, delta) {
+    cart[index].quantity += delta;
+    if (cart[index].quantity <= 0) cart.splice(index, 1);
     updateCartDisplay();
+}
+
+function clearCart() {
+    cart = [];
+    updateCartDisplay();
+}
+
+updateCartDisplay();
+
 </script>
 
 
