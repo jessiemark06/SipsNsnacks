@@ -67,36 +67,40 @@ $totalSales = array_sum(array_column($orders, 'total'));
 
 
            <!-- cards dito -->
+            <div class="container ">
+                <div> <h3 class="mb-3 mt-3 col-md-6">Report Tab</h3></div>
             <div class="row">
+                
                 <div class="col-md-6 mb-4">
                     <div class="card shadow-sm border-left-primary">
                     <div class="card-body">
-                        <h5 class="card-title">Total Sales</h5>
-                        <p class="card-text fs-3 text-success">₱ <?= number_format($totalSales, 2) ?></p>
+                        <h5 class="card-title">Total Sales:</h5>
+                        <p class="card-text fs-3 text-dark">₱ <?= number_format($totalSales, 2) ?></p>
                     </div>
                     </div>
                 </div>
                 <div class="col-md-6 mb-4">
                     <div class="card shadow-sm border-left-info">
                     <div class="card-body">
-                        <h5 class="card-title">Number of Staff</h5>
-                        <p class="card-text fs-3 text-info"><?= $totalStaff ?></p>
+                        <h5 class="card-title">Number of Staff:</h5>
+                        <p class="card-text fs-3 text-dark"><?= $totalStaff ?></p>
                     </div>
                     </div>
                 </div>
-                </div>
+            </div>
+            </div>
 
 
             <div class="container bg-white ">
 
  
             <form method="GET" class="mt-2 d-flex justify-content-between align-items-center gap-2 flex-wrap">
-                        <div> <h2 class="mb-4 text-center">Daily Sales</h2></div>
+                        <div> <h5 class="mb-2 text-center">Daily Sales</h5></div>
                     
                     <div class="d-flex align-items-center">
-                <label for="date" class="form-label mb-0 me-2" style="white-space: nowrap;">Select Date:</label>
-                <input type="date" id="date" name="date" value="<?= $date ?>" class="form-control me-2" style="max-width: 200px;">
-                <button type="submit" class="btn btn-dark">View</button>
+                <label for="date" class="form-label mb-2 me-2" style="white-space: nowrap;">Select Date:</label>
+                <input type="date" id="date" name="date" value="<?= $date ?>" class="form-control mb-2 me-2" style="max-width: 200px;">
+                <button type="submit" class="mb-2 btn btn-dark">View</button>
                 </div>
 
                 </form>
