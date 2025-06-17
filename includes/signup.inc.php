@@ -35,7 +35,10 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
     $errors["conum"] = "Contact number is required!";
     }elseif (!ctype_digit($conum)) {
     $errors["conum"] = "Contact number must contain digits only!";
+    }elseif (!empty($conum) && !preg_match("/^[0-9]{11}$/", $conum)) {
+        $errors["conum"] = "Contact number must be 11 digits!";
     }
+        
     if (is_email_invalid( $email)){
     $errors["email_invalid"] = "Invalid Email!";    
     }
